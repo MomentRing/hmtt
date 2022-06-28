@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="登录" left-arrow>
+    <van-nav-bar title="登录" left-arrow @click-left="$router.back()">
       <van-icon name="cross" slot="left" />
     </van-nav-bar>
     <!-- 表单S -->
@@ -15,7 +15,8 @@
           { pattern: /^(?:(?:\+|00)86)?1\d{10}$/, message: '请输入正确手机号' },
         ]"
       >
-        <i class="toutiao toutiao-shouji" slot="left-icon"></i>
+        <!-- <i class="toutiao toutiao-shouji" slot="left-icon"></i> -->
+        <MyIcon name="shouji" slot="left-icon"></MyIcon>
       </van-field>
       <!-- 手机E -->
       <!-- 验证码S -->
@@ -29,8 +30,8 @@
           { pattern: /^\d{6}$/, message: '验证码长度必须是6位' },
         ]"
       >
-        <i class="toutiao toutiao-yanzhengma" slot="left-icon"></i>
-
+        <!-- <i class="toutiao toutiao-yanzhengma" slot="left-icon"></i> -->
+        <MyIcon name="yanzhengma" slot="left-icon"></MyIcon>
         <template #button>
           <van-count-down
             :time="time"
@@ -80,6 +81,9 @@ export default {
         const res = await login(values)
         console.log(res)
         this.$store.commit('setUser', res.data.data)
+        this.$router.push({
+          name: 'my'
+        })
       } catch (err) {
         console.log(err)
       }
@@ -90,7 +94,8 @@ export default {
         // this.$toast.success('校验通过')
         this.isCountDownShow = true
         try {
-          await getSmsCode(this.mobile)
+          const res = await getSmsCode(this.mobile)
+          console.log(res)
           this.$toast.success('发送成功')
         } catch (error) {
           console.log(error)
