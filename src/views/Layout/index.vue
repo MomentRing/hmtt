@@ -1,6 +1,8 @@
 <template>
   <div>
-    <router-view class="main" />
+    <keep-alive :include="['Home']">
+      <router-view class="main" />
+    </keep-alive>
 
     <!-- 导航栏S -->
     <van-tabbar route>
