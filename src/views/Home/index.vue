@@ -3,7 +3,9 @@
     <!-- 标题搜索S -->
     <van-nav-bar title="标题" fixed>
       <template #title>
-        <van-button icon="search" class="search-btn">搜索</van-button>
+        <van-button icon="search" class="search-btn" to="/search"
+          >搜索</van-button
+        >
       </template>
     </van-nav-bar>
     <!-- 标题搜索E -->

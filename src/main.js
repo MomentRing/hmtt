@@ -10,7 +10,7 @@ import 'amfe-flexible'
 import '@/styles/index.less'
 import MyIcon from '@/components/MyIcon.vue'
 import * as obj from '@/filters/index'
-console.log(obj)
+
 Object.keys(obj).forEach(key => {
   Vue.filter(key, obj[key])
 })
