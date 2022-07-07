@@ -10,11 +10,12 @@ import 'amfe-flexible'
 import '@/styles/index.less'
 import MyIcon from '@/components/MyIcon.vue'
 import * as obj from '@/filters/index'
-
+import '@/components'
 Object.keys(obj).forEach(key => {
   Vue.filter(key, obj[key])
 })
 Vue.component('MyIcon', MyIcon)
+
 Vue.config.productionTip = false
 Vue.use(Vant)
 new Vue({
